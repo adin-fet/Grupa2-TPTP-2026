@@ -1,0 +1,59 @@
+body {
+    body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa; 
+    color: #333;
+    padding: 50px;
+}
+}
+
+.proizvodi-grid {
+    display: grid; /* Prelazimo sa flex-a na grid jer je precizniji */
+    grid-template-columns: repeat(3, 1fr); /* Ovo pravi TAČNO 3 kolone jednake širine */
+    gap: 40px; /* Veliki razmak između njih da ne budu "nabijeni" */
+    max-width: 1100px; /* Ograničavamo širinu da ne odu preširoko na ekranu */
+    margin: 50px auto; /* Centriramo cijelu mrežu na sredinu stranice */
+    padding: 0 20px;
+}
+
+.proizvod-kartica {
+    background-color: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    text-align: center;
+    /* Više ne moramo pisati width u pikselima, grid će to sam odrediti! */
+}
+
+.proizvod-kartica {
+    background-color: white;
+    padding: 15px;
+    border-radius: 10px;
+    width: 200px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.proizvod-kartica img {
+    max-width: 100%;
+    border-radius: 5px;
+}
+
+.dodaj-btn {
+    background-color: #000; /* Crna dugmad  */
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 25px; /* Zaobljena dugmad */
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 12px;
+    cursor: pointer;
+    width: 100%; /* Da dugme bude široko kao i kartica */
+    margin-top: 10px;
+}
+.proizvod-kartica:hover {
+    transform: translateY(-10px); /* Podigne karticu prema gore */
+    transition: 0.3s; /* Da to uradi glatko, a ne naglo */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
