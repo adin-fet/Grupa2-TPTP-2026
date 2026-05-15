@@ -1,0 +1,113 @@
+:root {
+    --primarna: #ff7e33;
+    --text-glavni: #1d1d1f;
+    --text-sivi: #86868b;
+    --bg-boja: #fbfbfd;
+    --ivica: #e5e5e7;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+
+body { background-color: var(--bg-boja); color: var(--text-glavni); line-height: 1.4; }
+
+.container { max-width: 1200px; margin: 0 auto; padding: 60px 20px; }
+
+/* HEADER - SPLIT DIZAJN */
+.header-glavni {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 30px;
+}
+
+.header-lijeva-strana h1 { font-size: 48px; font-weight: 800; letter-spacing: -1px; margin: 5px 0; }
+.nadnaslov { color: var(--primarna); font-weight: 800; font-size: 12px; letter-spacing: 1.2px; }
+.podnaslov { color: var(--text-sivi); font-size: 16px; }
+
+.header-desna-strana { display: flex; gap: 25px; }
+.trust-item { display: flex; align-items: center; gap: 10px; }
+.trust-ikona { 
+    width: 42px; height: 42px; background: #fff; border: 1px solid var(--ivica); 
+    border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 18px; 
+}
+.trust-tekst { display: flex; flex-direction: column; }
+.trust-tekst strong { font-size: 13px; font-weight: 700; }
+.trust-tekst span { font-size: 11px; color: var(--text-sivi); }
+
+/* LINIJA FILTERA */
+.kontrole-linija {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+    border-top: 1px solid var(--ivica);
+    margin-bottom: 40px;
+}
+
+.filter-dugmadi { display: flex; gap: 10px; }
+.filter-btn {
+    padding: 10px 18px; border-radius: 30px; border: 1px solid var(--ivica);
+    background: #fff; font-weight: 600; font-size: 14px; cursor: pointer; transition: 0.2s;
+}
+.filter-btn.active { background: var(--primarna); color: #fff; border-color: var(--primarna); }
+
+.sort-select { padding: 8px 12px; border-radius: 10px; border: 1px solid var(--ivica); font-weight: 600; }
+
+/* KARTICE */
+.proizvodi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.kartica {
+    background: #fff; border: 1px solid var(--ivica); border-radius: 18px;
+    padding: 20px; position: relative; transition: 0.3s ease; display: flex; flex-direction: column;
+}
+.kartica:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.05); }
+
+.slika-okvir { height: 170px; display: flex; align-items: center; justify-content: center; margin-bottom: 15px; }
+.slika-okvir img { max-width: 100%; max-height: 100%; object-fit: contain; }
+
+.info-dio h3 { font-size: 15px; font-weight: 600; margin-bottom: 8px; height: 40px; overflow: hidden; }
+.rating { color: #ffb400; font-size: 11px; margin-bottom: 15px; }
+.cijena { font-size: 19px; font-weight: 700; }
+.stara { font-size: 13px; color: var(--text-sivi); text-decoration: line-through; margin-left: 8px; }
+
+.dodaj-btn {
+    background: var(--primarna); color: #fff; border: none; padding: 12px; border-radius: 12px;
+    font-weight: 700; margin-top: 15px; cursor: pointer;
+}
+.pregled-btn {
+    background: #fff; border: 1px solid var(--ivica); padding: 10px; border-radius: 12px;
+    font-weight: 600; margin-top: 8px; cursor: pointer;
+}
+
+/* OSTALO */
+.tag { position: absolute; top: 15px; left: 15px; padding: 4px 10px; border-radius: 20px; font-size: 10px; font-weight: 800; color: #fff; }
+.novo { background: var(--primarna); }
+.top { background: #5e5ce6; }
+.popust { background: #ff3b30; }
+.srce { position: absolute; top: 15px; right: 15px; cursor: pointer; color: #d2d2d7; font-size: 20px; }
+
+.recenzije-sekcija { margin: 80px 0; }
+.naslov-centar { text-align: center; margin-bottom: 40px; font-size: 30px; font-weight: 800; }
+.recenzije-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.recenzija-box { background: #fff; border: 1px solid var(--ivica); padding: 25px; border-radius: 20px; }
+.user-info { display: flex; align-items: center; gap: 12px; margin-bottom: 15px; }
+.user-info img { border-radius: 50%; width: 45px; }
+
+.kontakt-traka {
+    background: #fff2eb;
+     border: 1px solid rgba(255,126,51,0.1); 
+     border-radius: 24px;
+    padding: 35px; display: flex;
+     justify-content: space-between; 
+     align-items: center;
+}
+.kontakt-info { display: flex; align-items: center; gap: 20px; }
+.chat-ikona { font-size: 32px; }
+.kontakt-dugme {background: var(--primarna);
+     color: #fff; 
+     text-decoration: none; 
+     padding: 16px 28px;
+      border-radius: 12px;
+       font-weight: 700;
+}
+
+

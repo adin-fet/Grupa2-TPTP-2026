@@ -1,69 +1,265 @@
+
+// dio layouta ( proizvodi ) je generisan uz pomoć AI-ja 
+  i prilagođen strukturi naseg sajta. Razumijem da ovaj layout funkcioniše tako što grupise sliku, tekst i dugme svakog 
+  artikla u zasebne kontejnere, što omogucava da se podaci o proizvodu drze na jednom mjestu 
+  i da ih CSS kasnije moze pravilno posloziti u responzivnu mrezu (grid). 
+
+
 <!DOCTYPE html>
 <html lang="bs">
 <head>
     <meta charset="UTF-8">
-    <title>Proizvodi - Grupa 2</title>
-    <!-- Ova linija ispod povezuje HTML sa onim CSS-om koji cu napravit-->
-    <link rel="stylesheet" href="style.css">
-</head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechHub - Premium Shop</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/tptpstil.css">
+
+
+    <style>
+    body {
+        background-color: #fdfcfb !important;
+        margin: 0;
+        overflow-x: hidden;
+    }
+
+    .pozadina-trake {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        z-index: -1;
+        pointer-events: none;
+    }
+
+    .pozadina-trake::before {
+        content: "";
+        position: absolute;
+        top: -10%;
+        left: -15%;
+        width: 140%;
+        height: 200px;
+        background: linear-gradient(135deg, #ff7e33 0%, transparent 50%);
+        opacity: 0.2; /* Ovdje kontrolisemo jacinu: 0.1 je slabo, 0.5 je jako */
+        transform: rotate(-15deg);
+        filter: blur(40px); 
+    }
+
+    /* Dona traka */
+    .pozadina-trake::after {
+        content: "";
+        position: absolute;
+        bottom: -10%;
+        right: -10%;
+        width: 140%;
+        height: 250px;
+        background: linear-gradient(135deg, transparent 50%, #ff7e33 100%);
+        opacity: 0.15;
+        transform: rotate(-15deg);
+        filter: blur(50px);
+    }
+
+    
+    .container, main, section, [class*="card"] {
+        background: transparent !important;
+    }
+</style>
+
+
+
 <body>
 
-    <section class="proizvodi-grid">
-        <!-- Prvi proizvod -->
-        <article class="proizvod-kartica">
-            <img src="samsung.PNG" alt="Mobitel">
-            <h3>Samsung Galaxy S24</h3>
-            <p>Vrhunski model za 2026. godinu.</p>
-            <span class="cijena">1800 KM</span>
-            <button class="dodaj-btn">Dodaj u korpu</button>
-        </article>
+<div class="pozadina-trake"></div>
 
-        <!-- Drugi proizvod -->
-        <article class="proizvod-kartica">
-            <img src= "hua.PNG" alt="Sat">
-            <h3>Huawei Watch GT 4</h3>
-            <p>Elegantan pametni sat.</p>
-            <span class="cijena">450 KM</span>
-            <button class="dodaj-btn">Dodaj u korpu</button>
-        </article>
+    <main class="container">
+        
+        <header class="header-glavni">
+            <div class="header-lijeva-strana">
+                <span class="nadnaslov">PREMIUM PONUDA</span>
+                <h1>Svi proizvodi</h1>
+                <p class="podnaslov">Istražite našu kompletnu ponudu najnovije tehnologije.</p>
+            </div>
+            
+            <div class="header-desna-strana">
+                <div class="trust-item">
+                    <div class="trust-ikona">🚚</div>
+                    <div class="trust-tekst">
+                        <strong>Besplatna dostava</strong>
+                        <span>iznad 100 KM</span>
+                    </div>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-ikona">🛡️</div>
+                    <div class="trust-tekst">
+                        <strong>Garancija povrata</strong>
+                        <span>14 dana</span>
+                    </div>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-ikona">🔒</div>
+                    <div class="trust-tekst">
+                        <strong>Sigurna kupovina</strong>
+                        <span>100% zaštićeno</span>
+                    </div>
+                </div>
+            </div>
+        </header>
 
-        <!-- Treci proizvod -->
-        <article class="proizvod-kartica">
-        <img src="iphone.jpg" alt="Mobitel">
-        <h3>iPhone 15 pro </h3>
-        <p>Titanijumski dizajn sa naprednim sistemom kamera</p>
-        <span class="cijena">24000 KM</span>
-        <button class="dodaj-btn">Dodaj u korpu</button>
-       </article> 
+        <div class="kontrole-linija">
+            <div class="filter-dugmadi">
+                <button class="filter-btn active">Svi proizvodi</button>
+                <button class="filter-btn">Telefoni</button>
+                <button class="filter-btn">Slušalice</button>
+                <button class="filter-btn">Dodaci</button>
+            </div>
+            <div class="sortiranje-wrap">
+                <span>Sortiraj po:</span>
+                <select class="sort-select">
+                    <option>Najnovije</option>
+                    <option>Cijena: Niža ka višoj</option>
+                    <option>Cijena: Viša ka nižoj</option>
+                </select>
+            </div>
+        </div>
 
-        <!-- Cetvrti proizvod -->
-            <article class="proizvod-kartica">
-            <img src="LINK_SLIKE" alt="Opis slike">
-            <h3>IME PROIZVODA</h3>
-            <p>KRATKI OPIS</p>
-            <span class="cijena">CIJENA KM</span>
-            <button class="dodaj-btn">Dodaj u korpu</button>
-        </article>
+        <section class="proizvodi-grid"> 
+            <article class="kartica" data-category="Telefoni">
+                <div class="tag novo">Novo</div>
+                <div class="srce">♡</div>
+                <div class="slika-okvir"><img src="images/samsung.PNG"></div>
+                <div class="info-dio">
+                    <h3>Samsung Galaxy S24 256GB</h3>
+                    <div class="rating">⭐⭐⭐⭐⭐ <span>(96)</span></div>
+                    <div class="cijena-wrap"><span class="cijena">1.699 KM</span><span class="stara">2.149 KM</span></div>
+                    <button class="dodaj-btn"><span>🛒</span> Dodaj u korpu</button>
+                    <button class="pregled-btn"><span>👁️</span> Brzi pregled</button>
+                </div>
+            </article>
+            <article class="kartica" data-category="Telefoni">
+                <div class="tag top">Top</div>
+                <div class="srce">♡</div>
+                <div class="slika-okvir"><img src="images/iphone.jpg"></div>
+                <div class="info-dio">
+                    <h3>Apple iPhone 15 Pro 256GB</h3>
+                    <div class="rating">⭐⭐⭐⭐⭐ <span>(128)</span></div>
+                    <div class="cijena-wrap"><span class="cijena">2.099 KM</span></div>
+                    <button class="dodaj-btn"><span>🛒</span> Dodaj u korpu</button>
+                    <button class="pregled-btn"><span>👁️</span> Brzi pregled</button>
+                </div>
+            </article>
+            <article class="kartica" data-category="Slušalice">
+                <div class="srce">♡</div>
+                <div class="slika-okvir"><img src="images/sony.PNG"></div>
+                <div class="info-dio">
+                    <h3>Sony WF-1000XM5 Black</h3>
+                    <div class="rating">⭐⭐⭐⭐☆ <span>(72)</span></div>
+                    <div class="cijena-wrap"><span class="cijena">449 KM</span></div>
+                    <button class="dodaj-btn"><span>🛒</span> Dodaj u korpu</button>
+                    <button class="pregled-btn"><span>👁️</span> Brzi pregled</button>
+                </div>
+            </article>
+            <article class="kartica" data-category="Slušalice">
+                <div class="tag popust">-15%</div>
+                <div class="srce">♡</div>
+                <div class="slika-okvir"><img src="images/hyper.PNG"></div>
+                <div class="info-dio">
+                    <h3>HyperX Cloud III Wireless</h3>
+                    <div class="rating">⭐⭐⭐⭐⭐ <span>(54)</span></div>
+                    <div class="cijena-wrap"><span class="cijena">349 KM</span><span class="stara">410 KM</span></div>
+                    <button class="dodaj-btn"><span>🛒</span> Dodaj u korpu</button>
+                    <button class="pregled-btn"><span>👁️</span> Brzi pregled</button>
+                </div>
+            </article>
+            <article class="kartica" data-category="Dodaci">
+                <div class="srce">♡</div>
+                <div class="slika-okvir"><img src="images/adapt.PNG"></div>
+                <div class="info-dio">
+                    <h3>Apple 20W USB-C Adapter</h3>
+                    <div class="rating">⭐⭐⭐⭐⭐ <span>(210)</span></div>
+                    <div class="cijena-wrap"><span class="cijena">55 KM</span></div>
+                    <button class="dodaj-btn"><span>🛒</span> Dodaj u korpu</button>
+                    <button class="pregled-btn"><span>👁️</span> Brzi pregled</button>
+                </div>
+            </article>
+            <article class="kartica" data-category="Dodaci">
+                <div class="tag novo">Novo</div>
+                <div class="srce">♡</div>
+                <div class="slika-okvir"><img src="images/maska.PNG"></div>
+                <div class="info-dio">
+                    <h3>Silikonska maska za iPhone</h3>
+                    <div class="rating">⭐⭐⭐⭐☆ <span>(45)</span></div>
+                    <div class="cijena-wrap"><span class="cijena">35 KM</span></div>
+                    <button class="dodaj-btn"><span>🛒</span> Dodaj u korpu</button>
+                    <button class="pregled-btn"><span>👁️</span> Brzi pregled</button>
+                </div>
+            </article>
+            <article class="kartica" data-category="Dodaci">
+                <div class="srce">♡</div>
+                <div class="slika-okvir"><img src="images/power.PNG"></div>
+                <div class="info-dio">
+                    <h3>Anker PowerCore 20k mAh</h3>
+                    <div class="rating">⭐⭐⭐⭐⭐ <span>(88)</span></div>
+                    <div class="cijena-wrap"><span class="cijena">120 KM</span><span class="stara">150 KM</span></div>
+                    <button class="dodaj-btn"><span>🛒</span> Dodaj u korpu</button>
+                    <button class="pregled-btn"><span>👁️</span> Brzi pregled</button>
+                </div>
+            </article>
+            <article class="kartica" data-category="Dodaci">
+                <div class="tag popust">Sale</div>
+                <div class="srce">♡</div>
+                <div class="slika-okvir"><img src="images/mag.PNG"></div>
+                <div class="info-dio">
+                    <h3>Apple MagSafe Punjač</h3>
+                    <div class="rating">⭐⭐⭐⭐⭐ <span>(102)</span></div>
+                    <div class="cijena-wrap"><span class="cijena">89 KM</span></div>
+                    <button class="dodaj-btn"><span>🛒</span> Dodaj u korpu</button>
+                    <button class="pregled-btn"><span>👁️</span> Brzi pregled</button>
+                </div>
+            </article>
+        </section>
 
-        <!-- Peti proizvod -->
-          <article class="proizvod-kartica">
-            <img src="LINK_SLIKE" alt="Opis slike">
-            <h3>IME PROIZVODA</h3>
-            <p>KRATKI OPIS</p>
-            <span class="cijena">CIJENA KM</span>
-            <button class="dodaj-btn">Dodaj u korpu</button>
-        </article>
+        <section class="recenzije-sekcija">
+            <h2 class="naslov-centar">Šta naši kupci kažu</h2>
+            <div class="recenzije-grid">
+                <div class="recenzija-box">
+                    <div class="user-info">
+                        <img src="https://i.pravatar.cc/50?u=1">
+                        <div><strong>Amir K.</strong><p>⭐⭐⭐⭐⭐</p></div>
+                    </div>
+                    <p>"Brza dostava i odlična podrška! Sve preporuke."</p>
+                </div>
+                <div class="recenzija-box">
+                    <div class="user-info">
+                        <img src="https://i.pravatar.cc/50?u=2">
+                        <div><strong>Lejla M.</strong><p>⭐⭐⭐⭐⭐</p></div>
+                    </div>
+                    <p>"Slušalice su vrhunske. Prezadovoljna sam!"</p>
+                </div>
+                <div class="recenzija-box">
+                    <div class="user-info">
+                        <img src="https://i.pravatar.cc/50?u=3">
+                        <div><strong>Marko P.</strong><p>⭐⭐⭐⭐⭐</p></div>
+                    </div>
+                    <p>"Najbolji shop za tech opremu u gradu."</p>
+                </div>
+            </div>
+        </section>
 
-         <!-- Sesti proizvod -->
-          <article class="proizvod-kartica">
-            <img src="LINK_SLIKE" alt="Opis slike">
-            <h3>IME PROIZVODA</h3>
-            <p>KRATKI OPIS</p>
-            <span class="cijena">CIJENA KM</span>
-            <button class="dodaj-btn">Dodaj u korpu</button>
-        </article>
+        <section class="kontakt-traka">
+            <div class="kontakt-info">
+                <span class="chat-ikona">💬</span>
+                <div>
+                    <h3>Trebate pomoć?</h3>
+                    <p>Kontaktirajte nas za sve informacije o proizvodima.</p>
+                </div>
+            </div>
+            <a href="kontakt.html" class="kontakt-dugme">Pošalji poruku →</a>
+        </section>
 
-    </section>
+    </main>
 
+    <script src="js/skripta.js"></script>
 </body>
+
+
 </html>
