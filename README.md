@@ -14,5 +14,5 @@ Adin Alibegovic - cijeli kontakt dio
 ## Screenshot naslovne strane
 
 <img src="images/naslovna1.png"/>
-<img src="iimages/naslovna2.png"/>
+<img src="images/naslovna2.png"/>
 
