@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="bs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechHub - Početna</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/tptpstil.css">
+</head>
+<body>
+
+    <div class="pozadina-trake"></div>
+
+    <div class="container">
+        
+        <header>
+            <div class="glavna-navigacija">
+                <div class="logo">
+                    <h2 style="color: var(--primarna); margin:0; font-weight: 800; letter-spacing: -1px;">TechHub</h2>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="index.html" style="color: var(--primarna);">Početna</a></li>
+                        <li><a href="proizvodi.html">Proizvodi</a></li>
+                        <li><a href="kontakt.html">Kontakt</a></li>
+                    </ul>
+                </nav>
+                
+                <div style="display: flex; align-items: center; gap: 15px;">
+                    <button id="dark-mode-toggle" class="filter-btn" style="padding: 8px 14px; border-radius: 50%; font-size: 16px;">🌙</button>
+                    
+                    <div class="github-link">
+                        <a href="https://github.com/adin-fet/Grupa2-TPTP-2026" target="_blank" style="text-decoration: none; font-weight: 700; color: var(--text-glavni); font-size: 14px;">🐙 GitHub</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="header-glavni">
+                <div class="header-lijeva-strana">
+                    <span class="nadnaslov">DOBRODOŠLI U TECHHUB</span>
+                    <h1 style="font-size: 42px;">Vodeća IT oprema <br>na jednom mjestu</h1>
+                </div>
+            </div>
+        </header>
+
+        <div class="pocetna-layout">
+            
+            <nav class="sekundarna-navigacija">
+                <h3>Kategorije</h3>
+                <div class="filter-dugmadi" style="display: flex; flex-direction: column; gap: 8px;">
+                    <button class="filter-btn active">Svi proizvodi</button>
+                    <button class="filter-btn">Telefoni</button>
+                    <button class="filter-btn">Slušalice</button>
+                    <button class="filter-btn">Dodaci</button>
+                    <button class="filter-btn">Akcija</button>
+                </div>
+            </nav>
+
+            <main>
+                <section class="proizvodi-grid" style="grid-template-columns: repeat(2, 1fr);"> 
+                    
+                    <article class="kartica" data-category="Telefoni">
+                        <div class="tag novo">Novo</div>
+                        <div class="srce">♡</div>
+                        <div class="slika-okvir"><img src="images/samsung.PNG" alt="Samsung Galaxy S24"></div>
+                        <div class="info-dio">
+                            <h3>Samsung Galaxy S24 256GB</h3>
+                            <div class="rating">⭐⭐⭐⭐⭐ <span>(96)</span></div>
+                            <div class="cijena-wrap"><span class="cijena">1699 KM</span><span class="stara">2149 KM</span></div>
+                            <button class="dodaj-btn"><span>🛒</span> Dodaj u korpu</button>
+                        </div>
+                    </article>
+
+                    <article class="kartica" data-category="Telefoni">
+                        <div class="tag top">Top</div>
+                        <div class="srce">♡</div>
+                        <div class="slika-okvir"><img src="images/iphone.jpg" alt="Apple iPhone 15 Pro"></div>
+                        <div class="info-dio">
+                            <h3>Apple iPhone 15 Pro 256GB</h3>
+                            <div class="rating">⭐⭐⭐⭐⭐ <span>(128)</span></div>
+                            <div class="cijena-wrap"><span class="cijena">2099 KM</span></div>
+                            <button class="dodaj-btn"><span>🛒</span> Dodaj u korpu</button>
+                        </div>
+                    </article>
+
+                    <article class="kartica" data-category="Slušalice">
+                        <div class="srce">♡</div>
+                        <div class="slika-okvir"><img src="images/sony.PNG" alt="Sony Slušalice"></div>
+                        <div class="info-dio">
+                            <h3>Sony WF-1000XM5 Black</h3>
+                            <div class="rating">⭐⭐⭐⭐☆ <span>(72)</span></div>
+                            <div class="cijena-wrap"><span class="cijena">449 KM</span></div>
+                            <button class="dodaj-btn"><span>🛒</span> Dodaj u korpu</button>
+                        </div>
+                    </article>
+
+                    <article class="kartica" data-category="Akcija">
+                        <div class="tag popust">-15%</div>
+                        <div class="srce">♡</div>
+                        <div class="slika-okvir"><img src="images/hyper.PNG" alt="HyperX Slušalice"></div>
+                        <div class="info-dio">
+                            <h3>HyperX Cloud III Wireless</h3>
+                            <div class="rating">⭐⭐⭐⭐⭐ <span>(54)</span></div>
+                            <div class="cijena-wrap"><span class="cijena">349 KM</span><span class="stara">410 KM</span></div>
+                            <button class="dodaj-btn"><span>🛒</span> Dodaj u korpu</button>
+                        </div>
+                    </article>
+
+                    <article class="kartica" data-category="Dodaci">
+                        <div class="srce">♡</div>
+                        <div class="slika-okvir"><img src="images/adapt.PNG" alt="Apple Adapter"></div>
+                        <div class="info-dio">
+                            <h3>Apple 20W USB-C Adapter</h3>
+                            <div class="rating">⭐⭐⭐⭐⭐ <span>(210)</span></div>
+                            <div class="cijena-wrap"><span class="cijena">55 KM</span></div>
+                            <button class="dodaj-btn"><span>🛒</span> Dodaj u korpu</button>
+                        </div>
+                    </article>
+
+                    <article class="kartica" data-category="Akcija">
+                        <div class="tag popust">Sale</div>
+                        <div class="srce">♡</div>
+                        <div class="slika-okvir"><img src="images/mag.PNG" alt="MagSafe Punjač"></div>
+                        <div class="info-dio">
+                            <h3>Apple MagSafe Punjač</h3>
+                            <div class="rating">⭐⭐⭐⭐⭐ <span>(102)</span></div>
+                            <div class="cijena-wrap"><span class="cijena">89 KM</span></div>
+                            <button class="dodaj-btn"><span>🛒</span> Dodaj u korpu</button>
+                        </div>
+                    </article>
+                </section>
+            </main>
+
+            <aside>
+                <div class="korpa-kontejner">
+                    <h3 style="margin-bottom: 15px; display: flex; justify-content: space-between; align-items: center; font-size: 18px;">
+                        <span>🛒 Vaša korpa</span>
+                        <span id="korpa-brojac">0</span>
+                    </h3>
+                    <div id="korpa-stavke">
+                        <p style="color: var(--text-sivi); text-align: center; font-size: 14px; margin: 15px 0;">Korpa je prazna.</p>
+                    </div>
+                    <div class="korpa-ukupno-red">
+                        <span>Ukupno:</span>
+                        <span id="korpa-ukupno">0 KM</span>
+                    </div>
+                    <button id="isprazni-korpu-btn" class="pregled-btn">🗑️ Isprazni korpu</button>
+                </div>
+
+                <div class="mapa-container">
+                    <h3>Naša lokacija</h3>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2876.8488319688533!2d18.41113577660207!3d43.85892533909778!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4758c8cf75caed73%3A0x633f86e3f3ab6660!2sUniverzitet%20u%20Sarajevu!5e0!3m2!1sbs!2sba!4v1710000000000" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <p class="mapa-opis">Posjetite našu poslovnicu na adresi iznad. Naše stručno osoblje Vam je na raspolaganju za sva pitanja.</p>
+                </div>
+            </aside>
+            
+        </div>
+
+        <footer>
+            <div class="footer-info">
+                <p><strong>Autori projekta (Grupa 2):</strong> Adem Musić, Zlata Kamberović, Adin Alibegović</p>
+                <p>© 2026 TechHub. Predmet: TPTP, vanr. prof. dr. Samra Mujačić.</p>
+            </div>
+            <div class="footer-links">
+                <a href="#">Facebook</a>
+                <a href="#">Instagram</a>
+                <a href="#">LinkedIn</a>
+            </div>
+        </footer>
+
+    </div>
+
+    <script src="js/skripta.js"></script>
+</body>
+</html>
