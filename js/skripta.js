@@ -158,106 +158,132 @@ document.addEventListener('DOMContentLoaded', () => {
 // ADINOV DIO - validacija unosa u formu
 // =========================================================
 
+// Osiguravamo da se skripta izvrši tek kada se HTML u potpunosti učita
 document.addEventListener("DOMContentLoaded", function() {
-    const forma = document.getElementById("forma-kontakt");
-    const uspjehKontejner = document.getElementById("uspjeh-kontejner");
+const forma = document.getElementById("kontakt-forma");
 
-    if (forma) {
-        forma.addEventListener("submit", function(event) {
-            event.preventDefault();
-            
-            ocistiSveGreske();
+if (forma) {
+    forma.addEventListener("submit", function(event) {
+        event.preventDefault();
 
-            const ime = document.getElementById("ime").value.trim();
-            const prezime = document.getElementById("prezime").value.trim();
-            const email = document.getElementById("email").value.trim();
-            const telefon = document.getElementById("telefon").value.trim();
-            const temaUpita = document.getElementById("tema_upita").value;
-            const poruka = document.getElementById("poruka").value.trim();
+        ocistiSveGreske();
 
-            let formaJeValidna = true;
+        const ime = document.getElementById("ime").value.trim();
+        const prezime = document.getElementById("prezime").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const telefon = document.getElementById("telefon").value.trim();
+        const temaUpita = document.getElementById("tema_upita").value;
+        const poruka = document.getElementById("poruka").value.trim();
 
-            if (ime === "") {
-                prikažiGrešku("ime", "Ime je obavezno polje.");
-                formaJeValidna = false;
-            }
-            if (prezime === "") {
-                prikažiGrešku("prezime", "Prezime je obavezno polje.");
-                formaJeValidna = false;
-            }
+        let formaJeValidna = true;
 
-            // Razumijem da: ^ označava početak stringa, [\w.-]+ obuhvata alfanumeričke znakove, tačke i crtice,
-            // @ je obavezni karakter, nakon čega slijedi domena i završetak ($) sa sufiksom od minimalno 2 karaktera.
-            const emailRegex = /^[\w.-]+@[\w.-]+\.[a-z]{2,}$/i;
-            if (email === "") {
-                prikažiGrešku("email", "Email je obavezno polje.");
-                formaJeValidna = false;
-            } else if (!emailRegex.test(email)) {
-                prikažiGrešku("email", "Unesite ispravan format email adrese (npr. ime@domen.com).");
-                formaJeValidna = false;
-            }
-
-            // Ovaj regex provjerava da li unos sadrži isključivo brojeve, razmake ili minuse.
-            // ^[0-9\s-]+$ osigurava da od početka do kraja stringa nema drugih karaktera osim navedenih.
-            const telefonRegex = /^[0-9\s-]+$/;
-            if (telefon === "") {
-                prikažiGrešku("telefon", "Telefon je obavezno polje.");
-                formaJeValidna = false;
-            } else if (!telefonRegex.test(telefon)) {
-                prikažiGrešku("telefon", "Telefon smije sadržavati samo cifre, razmake i crtice.");
-                formaJeValidna = false;
-            }
-
-            if (temaUpita === "") {
-                prikažiGrešku("tema", "Morate odabrati temu vašeg upita.");
-                formaJeValidna = false;
-            }
-
-            if (poruka === "") {
-                prikažiGrešku("poruka", "Polje za poruku ne može biti prazno.");
-                formaJeValidna = false;
-            }
-
-            // AKO JE SVE ISPRAVNO: Prikazuje se personalizirana poruka i briše se forma
-            if (formaJeValidna) {
-                uspjehKontejner.innerHTML = `🎉 Hvala Vam, ${ime}! Vaša poruka je uspješno poslana. Naš tim će Vas kontaktirati uskoro.`;
-                uspjehKontejner.style.display = "block";
-
-                forma.reset();
-            } else {
-                uspjehKontejner.style.display = "none";
-            }
-        });
-    }
-
-    // Pomoćna funkcija za dodavanje crvenog okvira i ispis teksta greške tačno pored polja
-    function prikažiGrešku(poljeId, tekstPoruke) {
-        let element = document.getElementById(poljeId === "tema" ? "tema_upita" : poljeId);
-        if (element) {
-            element.classList.add("input-error-border"); // Vizuelna oznaka (Crveni okvir)
+        if (ime === "") {
+            prikažiGrešku("ime", "Ime je obavezno polje.");
+            formaJeValidna = false;
         }
-        
-        let errorSpan = document.getElementById("error-" + poljeId);
-        if (errorSpan) {
-            errorSpan.textContent = tekstPoruke;
-            errorSpan.style.color = "red";
-            errorSpan.style.fontSize = "12px";
-            errorSpan.style.display = "block";
-            errorSpan.style.marginTop = "5px";
+
+        if (prezime === "") {
+            prikažiGrešku("prezime", "Prezime je obavezno polje.");
+            formaJeValidna = false;
         }
-    }
 
-    // Pomoćna funkcija koja čisti sve prethodne crvene okvire i tekstove grešaka
-    function ocistiSveGreske() {
-        const sviUnosi = document.querySelectorAll(".unos, .unos-select");
-        sviUnosi.forEach(un => {
-            un.classList.remove("input-error-border");
-        });
+        const emailRegex = /^[\w.-]+@[\w.-]+\.[a-z]{2,}$/i;
+        if (email === "") {
+            prikažiGrešku("email", "Email je obavezno polje.");
+            formaJeValidna = false;
+        } else if (!emailRegex.test(email)) {
+            prikažiGrešku("email", "Unesite ispravan format email adrese.");
+            formaJeValidna = false;
+        }
 
-        const sveGreskeSpans = document.querySelectorAll(".error-text");
-        sveGreskeSpans.forEach(span => {
-            span.textContent = "";
-            span.style.display = "none";
-        });
+        const telefonRegex = /^[0-9\s-]+$/;
+        if (telefon === "") {
+            prikažiGrešku("telefon", "Telefon je obavezno polje.");
+            formaJeValidna = false;
+        } else if (!telefonRegex.test(telefon)) {
+            prikažiGrešku("telefon", "Telefon smije sadržavati samo cifre, razmake i crtice.");
+            formaJeValidna = false;
+        }
+
+        if (temaUpita === "") {
+            prikažiGrešku("tema", "Morate odabrati temu vašeg upita.");
+            formaJeValidna = false;
+        }
+
+        if (poruka === "") {
+            prikažiGrešku("poruka", "Poruka ne može biti prazna.");
+            formaJeValidna = false;
+        } else if (poruka.length < 10) {
+            prikažiGrešku("poruka", "Poruka mora sadržavati minimalno 10 znakova.");
+            formaJeValidna = false;
+        }
+
+        if (formaJeValidna) {
+            const modal = document.getElementById("skocni-prozor");
+            const modalPoruka = document.getElementById("modal-poruka");
+
+            if (modal && modalPoruka) {
+                modalPoruka.innerHTML = `🎉 Hvala Vam, <strong>${ime}</strong>!<br>Vaša poruka je uspješno poslana.<br>Naš tim će Vas kontaktirati uskoro.`;
+                modal.style.display = "flex";
+            }
+
+            forma.reset();
+        }
+    });
+}
+
+function prikažiGrešku(poljeId, tekstPoruke) {
+    let element = document.getElementById(poljeId === "tema" ? "tema_upita" : poljeId);
+    if (element) {
+        element.classList.add("input-error-border");
     }
+    
+    let errorSpan = document.getElementById("error-" + poljeId);
+    if (errorSpan) {
+        errorSpan.textContent = tekstPoruke;
+        errorSpan.style.display = "block";
+    }
+}
+
+function ocistiSveGreske() {
+    const sviUnosi = document.querySelectorAll(".unos, .unos-select");
+    sviUnosi.forEach(un => {
+        un.classList.remove("input-error-border");
+    });
+
+    const sveGreskeSpans = document.querySelectorAll(".error-text");
+    sveGreskeSpans.forEach(span => {
+        span.textContent = "";
+        span.style.display = "none";
+    });
+}
+const modalProzor = document.getElementById("skocni-prozor");
+const zatvoriModalBtn = document.getElementById("zatvori-modal-btn");
+
+if (zatvoriModalBtn && modalProzor) {
+    zatvoriModalBtn.addEventListener("click", function() {
+        modalProzor.style.display = "none";
+    });
+
+    window.addEventListener("click", function(event) {
+        if (event.target === modalProzor) {
+            modalProzor.style.display = "none";
+        }
+    });
+}
+
+const darkModeToggle = document.getElementById("dark-mode-toggle");
+const body = document.body;
+
+if (darkModeToggle) {
+    darkModeToggle.addEventListener("click", function() {
+        body.classList.toggle("dark-mode");
+
+        if (body.classList.contains("dark-mode")) {
+            darkModeToggle.textContent = "☀️";
+        } else {
+            darkModeToggle.textContent = "🌙"; 
+        }
+    });
+}
 });
