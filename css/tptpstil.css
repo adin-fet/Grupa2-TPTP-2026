@@ -111,3 +111,471 @@ body { background-color: var(--bg-boja); color: var(--text-glavni); line-height:
 }
 
 
+/* =========================================================
+   ADEMOV DIO - SPECIFIČNI STILOVI ZA POČETNU STRANICU
+========================================================= */
+
+/* Tranzicija za prelazak u Dark Mode  */
+body { transition: background-color 0.3s, color 0.3s; }
+.kartica, .filter-btn, .pregled-btn, .mapa-container, .sekundarna-navigacija, footer, .glavna-navigacija, .korpa-kontejner { transition: background-color 0.3s, border-color 0.3s, color 0.3s; }
+
+/* Dark Mode varijable preklapanja */
+body.dark-mode {
+    --bg-boja: #121212;
+    --text-glavni: #f5f5f7;
+    --text-sivi: #a1a1a6;
+    --ivica: #2c2c2e;
+}
+body.dark-mode .kartica, 
+body.dark-mode .filter-btn, 
+body.dark-mode .pregled-btn, 
+body.dark-mode .mapa-container, 
+body.dark-mode .sekundarna-navigacija, 
+body.dark-mode footer, 
+body.dark-mode .glavna-navigacija, 
+body.dark-mode .korpa-kontejner,
+body.dark-mode .sort-select {
+    background-color: #1c1c1e !important;
+    color: var(--text-glavni);
+    border-color: var(--ivica);
+}
+
+/* Dekorativne pozadinske trake (preuzeto od Zlate) */
+.pozadina-trake { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; z-index: -1; pointer-events: none; }
+.pozadina-trake::before { content: ""; position: absolute; top: -10%; left: -15%; width: 140%; height: 200px; background: linear-gradient(135deg, #ff7e33 0%, transparent 50%); opacity: 0.2; transform: rotate(-15deg); filter: blur(40px); }
+
+/* Glavna navigacija na početnoj */
+.glavna-navigacija { background: #fff; padding: 15px 25px; border-radius: 16px; border: 1px solid var(--ivica); display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px; }
+.glavna-navigacija ul { list-style: none; display: flex; gap: 30px; }
+.glavna-navigacija a { text-decoration: none; color: var(--text-glavni); font-weight: 600; font-size: 15px; }
+.glavna-navigacija a:hover { color: var(--primarna); }
+.github-link a { background: rgba(0,0,0,0.05); padding: 10px 15px; border-radius: 10px; text-decoration: none; font-weight: 700; color: var(--text-glavni); font-size: 14px; }
+body.dark-mode .github-link a { background: rgba(255,255,255,0.1); }
+
+/* Grid Layout sa 3 kolone  */
+.pocetna-layout { display: grid; grid-template-columns: 220px 1fr 300px; gap: 30px; align-items: start; }
+
+/* Sekundarna navigacija */
+.sekundarna-navigacija { background: #fff; padding: 20px; border-radius: 18px; border: 1px solid var(--ivica); display: flex; flex-direction: column; gap: 10px; }
+.sekundarna-navigacija h3 { margin-bottom: 10px; font-size: 18px; }
+.sekundarna-navigacija .filter-btn { width: 100%; text-align: left; }
+
+/* Mapa Container */
+.mapa-container { background: #fff; padding: 20px; border-radius: 18px; border: 1px solid var(--ivica); }
+.mapa-container iframe { width: 100%; height: 220px; border-radius: 12px; margin-bottom: 10px; }
+.mapa-opis { font-size: 13px; color: var(--text-sivi); line-height: 1.5; }
+
+/* Korpa Interfejs (Kriterij 11) */
+.korpa-kontejner { background: #fff; padding: 20px; border-radius: 18px; border: 1px solid var(--ivica); margin-bottom: 25px; }
+#korpa-brojac { background: var(--primarna); color: #fff; font-size: 12px; padding: 2px 8px; border-radius: 10px; font-weight: 700; }
+.korpa-stavka { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px dashed var(--ivica); font-size: 14px; }
+.korpa-ukupno-red { display: flex; justify-content: space-between; align-items: center; font-weight: 800; margin: 15px 0; padding-top: 10px; border-top: 1px solid var(--ivica); font-size: 16px; }
+#isprazni-korpu-btn { width: 100%; color: #ff3b30; border-color: rgba(255,59,48,0.2); background: rgba(255,59,48,0.05); margin-top: 5px; }
+#isprazni-korpu-btn:hover { background: #ff3b30; color: #fff; }
+
+/* Footer */
+footer { margin-top: 80px; padding: 40px 20px; background: #fff; border-top: 1px solid var(--ivica); text-align: center; border-radius: 24px 24px 0 0; }
+.footer-info p { margin-bottom: 8px; color: var(--text-sivi); font-size: 14px; }
+.footer-links { margin-top: 15px; }
+.footer-links a { color: var(--primarna); text-decoration: none; margin: 0 10px; font-weight: 600; }
+
+/* Responzivnost za layout  */
+@media (max-width: 992px) {
+    .pocetna-layout { grid-template-columns: 1fr; }
+    .sekundarna-navigacija .filter-dugmadi { flex-direction: row; flex-wrap: wrap; }
+    .sekundarna-navigacija .filter-btn { width: auto; }
+}
+
+
+
+/* =========================================================
+    ADINOV DIO - CSS ZA KONTAKT 
+========================================================= */
+:root {
+    --glavna-narandzasta: #ff7e33;
+    --hover-pozadina: #ff7e33be;;
+    --bijela: #fff;
+    --okvir: lightgray;
+    --boja-slova-sv: #666666;
+    --tranzicija: 0.3s ease;
+}
+
+.kontakt-body{
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: 100%; 
+    min-height: 100vh; 
+    margin: 0; 
+    padding: 0;
+    position: relative;
+}
+
+.gradacija{
+    position: absolute;
+    top: 15px;
+    left: 0;
+    bottom: 0;
+    min-height: 100vh;
+    width: 10%;
+    background: linear-gradient(to right,
+        rgb(255, 126, 51) 0%, 
+        rgba(255, 126, 51, 0.5) 50%, 
+        rgba(0, 0, 0, 0) 100%);
+    z-index: -1;
+}
+
+.centr_dio{
+    display:flex;
+    justify-content: space-between;
+    align-items: stretch;
+    width: 95%;
+    max-width: 1600px;
+    max-height: 700px;
+    margin: 35px auto;
+    margin-left: 30px;
+    z-index:1;
+    gap:20px;
+}
+
+/* Slika */
+
+.slika-lijevo{
+    margin: 0;
+    padding: 0;
+    width: 20%;
+}
+
+.slika-lijevo img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+/* /Slika*/
+/* Promotivni dio */
+
+.info{
+    max-width: 350px;
+    padding: 25px;
+}
+
+.info header h1 {
+    margin-top: 5px;
+    margin-bottom: 15px;
+}
+
+.info address{
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    gap:15px;
+    text-align:left;
+    border: solid 1px var(--okvir);
+    border-radius: 20px;
+    padding: 15px;
+}
+
+.kontakt-ikonica{
+    display:flex;
+    gap: 20px;
+    align-items: center;
+}
+.info address .kontakt-ikonica:not(:last-child) {
+    border-bottom: 1px solid var(--okvir); 
+    width: 100%;
+}
+
+.kontakt-ikonica p{
+    color: var(--boja-slova-sv);
+}
+
+.kontakt-ikonica i{
+    font-size: 1.6rem;
+    color: var(--glavna-narandzasta);
+}
+
+.kontakt-ikonica:nth-child(1) i,
+.kontakt-ikonica:nth-child(3) i{
+    color: transparent; 
+    -webkit-text-stroke: 2px var(--glavna-narandzasta);
+}
+
+.sigurnost{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-left: 15px;;
+}
+
+.sigurnost i{
+    font-size: 1.6rem;
+    color: transparent;
+    -webkit-text-stroke: 2px var(--glavna-narandzasta);
+}
+/* /Promotivni dio */
+
+/* Forma */
+.forma-kontejner{
+    display: flex;
+    border: solid 1px var(--okvir);
+    min-width: 45%;
+    border-radius: 20px;
+    height: auto;
+    max-height: 700px;
+}
+
+#kontakt-forma{
+    padding: 10px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Naslov forme */
+#kontakt-forma h2.naslov {
+    margin-top: 0;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#kontakt-forma h2 i{
+    font-size: 2rem;
+    color: var(--glavna-narandzasta);
+}
+/* Naslov forme */
+/* Polja forme */
+.polja-forme {
+    border: solid 1px var(--okvir);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.unos-select {
+    width: 100%;
+    height: 40px;
+    padding: 8px 12px;
+    border: 2px solid var(--glavna-narandzasta);
+    border-radius: 10px;
+    font-family: var(--font-glavni);
+    background-color: var(--bijela);
+    color: #333;
+    outline: none;
+    transition: var(--tranzicija);
+    cursor: pointer;
+}
+
+.unos-select:focus {
+    border-color: var(--glavna-narandzasta);
+    box-shadow: 0 0 5px rgba(255, 126, 51, 0.5);
+}
+
+
+
+.input_kontejner, .poruka_kontejner {
+    position: relative;
+}
+
+.input_kontejner input, .poruka_kontejner textarea {
+    width: 100%;
+    border: 2px solid var(--glavna-narandzasta);
+    background: none;
+    color: var(--boja-slova-sv);
+    padding: 1.3rem 1.2rem 0.5rem 1.2rem; 
+    font-size: 0.95rem;
+    font-weight: 500;
+    border-radius: 20px;
+    box-sizing: border-box;
+    transition: 0.3s;
+    outline: none;
+}
+
+.poruka_kontejner textarea {
+    min-height: 150px;
+    border-radius: 22px;
+    resize: none;
+}
+
+.input_kontejner input:focus, .poruka_kontejner textarea:focus{
+    box-shadow: 0 0 8px rgba(255, 126, 51, 0.4);
+}
+
+.input_kontejner label, .poruka_kontejner label {
+    position: absolute;
+    top: 6px;
+    left: 1.2rem;
+    font-size: 0.75rem;
+    color: #545454;
+    font-weight: 550;
+    pointer-events: none;
+    z-index: 10;
+}
+
+.polja-forme .poruka_kontejner {
+    grid-column: span 2;
+} 
+
+.input_kontejner:focus-within label, .poruka_kontejner:focus-within label {
+    color: var(--glavna-narandzasta);
+}
+/* /Polja forme */
+/* Dugme */
+.polja-forme button{
+    grid-column: 2;
+    align-self: end;
+    height: 46px;
+    background-color: var(--glavna-narandzasta);
+    color: var(--bijela);
+    border-radius:20px;
+    border: none;
+    cursor: pointer;
+}
+
+.polja-forme i{
+    color: var(--bijela);
+}
+
+.polja-forme button:hover {
+    background-color: #ff8746;
+    transform: translateY(1px); 
+    box-shadow: 0 5px 15px rgba(255, 126, 51, 0.4); 
+}
+
+.polja-forme .input_kontejner:nth-child(5){
+    grid-column:1;
+}
+/* /Dugme */
+/* /Forma */
+
+/* Footer */
+.kontakt-footer {
+    border: solid 0.5px var(--okvir);
+    background-color: var(--bijela);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(255, 126, 51, 0.1);
+    width: 90%;
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 10px;
+}
+
+.kontakt-footer ul{
+    list-style: none; 
+    padding: 0;
+    margin: 0;
+    display:flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.kontakt-footer ul li{
+    display: flex;
+    align-items: center;
+    gap:15px;
+    text-align:left;
+    justify-content: center;
+}
+
+.kontakt-footer ul li i{
+    font-size: 2rem;
+    -webkit-text-stroke: 2px var(--glavna-narandzasta);
+    color: transparent;
+}
+
+/* Tablet */
+@media screen and (max-width: 1100px) {
+    .centr_dio {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 95%;
+        gap: 30px;
+        margin: 30px auto;
+        max-height: none;
+    }
+
+    .kontakt-forma{
+        width: 100%;
+        max-width: 600px;
+    }
+    .slika-lijevo, .inf {
+        width: 40%;
+        max-width: 40%;
+    }
+
+    .slika-lijevo {
+        height: auto;
+        min-height: 250px;
+    }
+
+    .forma-kontejner{
+        width: 70%;
+    }
+    .kontakt-footer ul li {
+        flex-basis: calc(50% - 20px);
+    }
+}
+
+/* Telefon */
+@media screen and (max-width: 600px) {
+    .gradacija, .slika-lijevo {
+        display: none;
+    }
+
+    .centr_dio {
+        flex-direction: column;
+        align-items: center;
+        width: 90%;
+        margin: 20px auto;
+        gap: 25px;
+        max-height: none;
+    }
+
+    .info, .forma-kontejner {
+        width: 90%;
+        max-width: 100%;
+    }
+    
+    .polja-forme {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .polja-forme .input_kontejner,
+    .polja-forme .poruka_kontejner,
+    .polja-forme button {
+        grid-column: auto !important;
+        width: 100%;
+    }
+
+    .glavna-navigacija {
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px;
+        text-align: center;
+    }
+
+    .glavna-navigacija ul {
+        gap: 20px;
+        padding: 0;
+    }
+
+    /* Footer elementi na telefonu */
+    .kontakt-footer{
+        width:75%;
+    }
+    .kontakt-footer ul {
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+        padding-left: 10px;
+    }
+}
+/* /Footer */
